@@ -20,9 +20,8 @@ $( document ).ready(function() {
         
     });
 
-    $("#pessoasDeficiencia").change(function () { 
-
-        if ( $("#pessoasDeficiencia option:selected").val() == 'true' ) {
+    $("#pessoas_deficiencia").change(function () { 
+        if ( $("#pessoas_deficiencia option:selected").val() == '1' ) {
             $(".deficiencia").removeClass("d-none");
         } else {
             $(".deficiencia").addClass("d-none");
@@ -38,8 +37,7 @@ $( document ).ready(function() {
         success: function(data){
             $("#cotentStepOne").removeClass ('whirl');
             if (data.status == 'sucesso') {
-                $("#formOneStep").addClass("d-none");
-                $("#formSecondStep").removeClass("d-none");
+                window.location.href = '/pesquisa/secondstep/'
             } else {
                 swal('Ooops!', data.mensagem, 'error').then(function (){
                     if (data.dados.reload == 'true') location.reload();
@@ -58,8 +56,9 @@ $( document ).ready(function() {
         success: function(data){
             $("#cotentStepOne").removeClass('whirl');
             if (data.status == 'sucesso') {
-                $("#formOneStep").addClass("d-none");
-                $("#formSecondStep").removeClass("d-none");
+                swal('Sucesso!','Formúlario concluido com sucesso.','success').then(function (){
+                    window.location.href = '/pesquisa/firststep/'
+                }); 
             } else {
                 swal('Ooops!', data.mensagem, 'error').then(function (){
                     if (data.dados.reload == 'true') location.reload();
@@ -69,10 +68,12 @@ $( document ).ready(function() {
     };
  
     // bind form using 'ajaxForm' 
-    $('#formOneStep').ajaxForm(stepSecond); 
+    $('#formSecondStep').ajaxForm(stepSecond); 
 
 
     $("#btnStepOne").prop('disabled', true)
+    $("#btnStepSecond").prop('disabled', true)
+
     $(".qtd_idade").blur(function(event) {
 
         let elem = $(".qtd_idade")
@@ -88,7 +89,7 @@ $( document ).ready(function() {
 
             if ( soma > 1 && soma > 2 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                $(".qtd_idade").val("")
+                $(".qtd_idade").val(0)
                 $("#btnStepOne").prop('disabled', true)
 
             }
@@ -98,7 +99,7 @@ $( document ).ready(function() {
 
             if (soma > 3 && soma > 4 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio', 'error')
-                    $(".qtd_idade").val("")
+                    $(".qtd_idade").val(0)
             }
 
             if( soma == 3 || soma == 4) {
@@ -109,7 +110,7 @@ $( document ).ready(function() {
 
             if (soma > 5 && soma > 6 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                    $(".qtd_idade").val("")
+                    $(".qtd_idade").val(0)
             }
 
             if( soma == 5 || soma == 6) {
@@ -120,7 +121,7 @@ $( document ).ready(function() {
 
             if (soma > 7 && soma > 8 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                    $(".qtd_idade").val("")
+                    $(".qtd_idade").val(0)
             }
 
 
@@ -129,6 +130,10 @@ $( document ).ready(function() {
             }
         }
 
+    });
+
+    $("#selectReponsavelFamilia").change(function(event) {
+        $("#btnStepSecond").prop('disabled', false)
     });
 });
 

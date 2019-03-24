@@ -20,16 +20,17 @@ class CreatePesquisaTable extends Migration
             $table->unsignedBigInteger('cras_id');
             $table->unsignedBigInteger('bairro_id');
             $table->string('qtd_pessoas', 50);
-            $table->integer('qtd_idade_1');
-            $table->integer('qtd_idade_2');
-            $table->integer('qtd_idade_3');
-            $table->integer('qtd_idade_4');
-            $table->integer('qtd_idade_5');
-            $table->boolean('pessoas_deficiencia');
+            $table->integer('qtd_idade_1')->default(0);
+            $table->integer('qtd_idade_2')->default(0);
+            $table->integer('qtd_idade_3')->default(0);
+            $table->integer('qtd_idade_4')->default(0);
+            $table->integer('qtd_idade_5')->default(0);
+            $table->boolean('pessoas_deficiencia')->nullable();
             $table->boolean('second_step');
-            $table->string('tipo_deficiencia', 50);
-            $table->string('mebro_familia', 10);
-            $table->string('reponsavel_familia', 10);
+            $table->string('tipo_deficiencia', 50)->nullable();
+            $table->string('mebro_familia', 10)->nullable();
+            $table->string('reponsavel_familia', 10)->nullable();
+            $table->boolean('finalizado', 10)->nullable();
 
         });
     }

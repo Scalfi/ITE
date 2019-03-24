@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/', 'PesquisaController@index');
 
 
 Auth::routes();
 
-Route::get('/pesquisa', 'PesquisaController@index')->middleware('auth');
-Route::post('/save/stepone', 'PesquisaController@stepone')->middleware('auth');
+Route::get('/pesquisa/firststep', 'PesquisaController@stepone')->middleware('auth');
+Route::get('/pesquisa/secondstep', 'PesquisaController@secondstep')->middleware('auth');
+Route::post('/save/stepone', 'PesquisaController@steponesave')->middleware('auth');
+Route::post('/save/stepsecond', 'PesquisaController@secondstepsave')->middleware('auth');
 
 Route::post('/bairro', 'BairroController@getBairros')->middleware('auth');
 

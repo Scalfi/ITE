@@ -15,7 +15,7 @@
             <form action="/save/stepone" method="post" id="formOneStep">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id}}">
-                <input type="hidden" name="second_step" value="true">
+                <input type="hidden" name="second_step" value="1">
                 <div class="card">
                     <div class="card-header bg-success text-white">
                         <strong>Fomulário primeira estapa.</strong>
@@ -65,27 +65,27 @@
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
                                             <label for="qtd_idade"><i class="fas fa-hashtag"></i> 0 a 11  anos e 11 meses:</label>
-                                            <input type="number" name="qtd_idade_1" class="form-control qtd_idade" value="">
+                                            <input type="number" name="qtd_idade_1" class="form-control qtd_idade" value="0">
                                             <small class="text-muted">Digite o número de pessoas</small>
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
                                             <label for="qtd_idade"><i class="fas fa-hashtag"></i> 12 a 17 anos e 11 meses:</label>
-                                            <input type="number" name="qtd_idade_2" class="form-control qtd_idade" value="">
+                                            <input type="number" name="qtd_idade_2" class="form-control qtd_idade" value="0">
                                             <small class="text-muted">Digite o número de pessoas</small>
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
                                             <label for="qtd_idade"><i class="fas fa-hashtag"></i> 18 a 59 anos e 11 meses:</label>
-                                            <input type="number" name="qtd_idade_3" class="form-control qtd_idade" value="">
+                                            <input type="number" name="qtd_idade_3" class="form-control qtd_idade" value="0">
                                             <small class="text-muted">Digite o número de pessoas</small>
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
                                             <label for="qtd_idade"><i class="fas fa-hashtag"></i> 60 anos a 69 anos e 11 meses:</label>
-                                            <input type="number" name="qtd_idade_4" class="form-control qtd_idade" value="">
+                                            <input type="number" name="qtd_idade_4" class="form-control qtd_idade" value="0">
                                             <small class="text-muted">Digite o número de pessoas</small>
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12">
                                             <label for="qtd_idade"><i class="fas fa-hashtag"></i> Acima de 70 anos:</label>
-                                            <input type="number" name="qtd_idade_5" class="form-control qtd_idade" value="">
+                                            <input type="number" name="qtd_idade_5" class="form-control qtd_idade" value="0">
                                             <small class="text-muted">Digite o número de pessoas</small>
                                         </div>
                                     </div>
