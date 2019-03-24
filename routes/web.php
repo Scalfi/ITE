@@ -19,6 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/pesquisa', 'PesquisaController@index')->middleware('auth');
+Route::post('/save/stepone', 'PesquisaController@stepone')->middleware('auth');
+
 Route::post('/bairro', 'BairroController@getBairros')->middleware('auth');
 
 

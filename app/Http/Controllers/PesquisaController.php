@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Cidade;
 use App\Bairro;
 use App\Cras;
+use App\Pesquisa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PesquisaController extends Controller
 {
@@ -17,6 +19,7 @@ class PesquisaController extends Controller
         $this->cidade = new Cidade;
         $this->bairro = new Bairro;
         $this->cras = new Cras;
+        $this->pesquisa = new Pesquisa;
 
     }
     
@@ -35,4 +38,20 @@ class PesquisaController extends Controller
             'cras' => $cras
         ]);
     }
+
+
+    /** 
+     * Faz save do stepone.
+     * @return view
+     */
+    public function stepone(Request $request)
+    {
+        $save = $this->pesquisa::create($request->all());
+
+        if($save) return response()->json(['status' => 'sucesso', 'mensagem' => '']);
+
+        return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
+
+    }
+
 }

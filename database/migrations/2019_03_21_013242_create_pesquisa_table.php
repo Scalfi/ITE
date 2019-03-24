@@ -13,9 +13,24 @@ class CreatePesquisaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pesquisa', function (Blueprint $table) {
+        Schema::create('pesquisas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('cidade_id');
+            $table->unsignedBigInteger('cras_id');
+            $table->unsignedBigInteger('bairro_id');
+            $table->string('qtd_pessoas', 50);
+            $table->integer('qtd_idade_1');
+            $table->integer('qtd_idade_2');
+            $table->integer('qtd_idade_3');
+            $table->integer('qtd_idade_4');
+            $table->integer('qtd_idade_5');
+            $table->boolean('pessoas_deficiencia');
+            $table->boolean('second_step');
+            $table->string('tipo_deficiencia', 50);
+            $table->string('mebro_familia', 10);
+            $table->string('reponsavel_familia', 10);
+
         });
     }
 
@@ -26,6 +41,6 @@ class CreatePesquisaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pesquisa');
+        Schema::dropIfExists('pesquisas');
     }
 }
