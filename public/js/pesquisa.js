@@ -91,16 +91,19 @@ $( document ).ready(function() {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
                 $(".qtd_idade").val(0)
                 $("#btnStepOne").prop('disabled', true)
-
             }
 
 
         } else if ($("#selectQtdPessoas option:selected").val() == 'tres_ou_quatro') {
-
             if (soma > 3 && soma > 4 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio', 'error')
-                    $(".qtd_idade").val(0)
+                $(".qtd_idade").val(0)
+                $("#btnStepOne").prop('disabled', true)
             }
+
+            if( soma < 3 || soma < 4) {
+                $("#btnStepOne").prop('disabled', true)
+            }            
 
             if( soma == 3 || soma == 4) {
                 $("#btnStepOne").prop('disabled', false)
@@ -110,7 +113,12 @@ $( document ).ready(function() {
 
             if (soma > 5 && soma > 6 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                    $(".qtd_idade").val(0)
+                $(".qtd_idade").val(0)
+                $("#btnStepOne").prop('disabled', true)
+            }
+
+            if( soma < 5 || soma < 6) {
+                $("#btnStepOne").prop('disabled', true)
             }
 
             if( soma == 5 || soma == 6) {
@@ -121,9 +129,14 @@ $( document ).ready(function() {
 
             if (soma > 7 && soma > 8 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                    $(".qtd_idade").val(0)
+                $("#btnStepOne").prop('disabled', true)
+                $(".qtd_idade").val(0)
             }
 
+
+            if( soma < 7 || soma < 8) {
+                $("#btnStepOne").prop('disabled', false)
+            } 
 
             if( soma == 7 || soma == 8) {
                 $("#btnStepOne").prop('disabled', false)

@@ -17,7 +17,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header bg-success text-white">
-                        <strong>Fomulário segunda etapa. </strong>
+                        <strong>Fomulário etapa final. </strong>
                     </div>
                     <div class="card-body">
                         <div id="secondStep">
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary float-right mt-2" id="btnStepSecond"><i class="fa fa-paper-plane mr-2"></i>Enviar</button>
+                        <button type="submit" class="btn btn-sm btn-success float-right mt-2" id="btnStepSecond"><i class="fa fa-paper-plane mr-2"></i>Finalizar</button>
                     </div>
                 </div>
             </form>

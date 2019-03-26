@@ -92,7 +92,7 @@ class PesquisaController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()) {
-            return redirect('/pesquisa/secondstep/');
+            return redirect('/pesquisa/firststep/');
 
         } else {
             return view('auth/login');
