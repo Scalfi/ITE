@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#selectBairros").change(function () { 
-        oneStep();
-    });
+	$("#selectBairros").change(function(event) {
+		liberarButton($("#selectBairros option:selected").val())
+	});
 });

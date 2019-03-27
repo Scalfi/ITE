@@ -12,6 +12,7 @@ $( document ).ready(function() {
             },
             success: function (response) {
                 $("#divBairros").html(response)
+                liberarButton(0)
             },
             error: function (){
                 swal('Caro usúario', 'Ocorreu um erro por favor atualize a pagina','error')
@@ -22,12 +23,44 @@ $( document ).ready(function() {
 
     $("#pessoas_deficiencia").change(function () { 
         if ( $("#pessoas_deficiencia option:selected").val() == '1' ) {
+
             $(".deficiencia").removeClass("d-none");
+            $("#selectReponsavelFamilia").trigger('change')
+
         } else {
             $(".deficiencia").addClass("d-none");
+            $("#membro_familia").val("")
+            $("#selectTipoDeficiencia").val(0).change()
         }
         
     });
+
+    $("#membro_familia").keyup(function(event) {
+        $("#selectReponsavelFamilia").trigger('change')
+    });    
+
+    $("#selectTipoDeficiencia").change(function(event) {
+        $("#selectReponsavelFamilia").trigger('change')
+    });
+
+    var stepInicial = {
+        beforeSubmit: function(){
+            $("#cotentStepInicial").addClass('whirl');
+        },
+        success: function(data){
+            $("#cotentStepIncial").removeClass ('whirl');
+            if (data.status == 'sucesso') {
+                window.location.href = '/pesquisa/firststep'
+            } else {
+                swal('Ooops!', data.mensagem, 'error').then(function (){
+                    if (data.dados.reload == 'true') location.reload();
+                });
+            }
+        }
+    };
+ 
+    // bind form using 'ajaxForm' 
+    $('#formInicialStep').ajaxForm(stepInicial); 
 
 
     var stepOne = {
@@ -37,7 +70,7 @@ $( document ).ready(function() {
         success: function(data){
             $("#cotentStepOne").removeClass ('whirl');
             if (data.status == 'sucesso') {
-                window.location.href = '/pesquisa/secondstep/'
+                window.location.href = '/pesquisa/secondstep'
             } else {
                 swal('Ooops!', data.mensagem, 'error').then(function (){
                     if (data.dados.reload == 'true') location.reload();
@@ -51,13 +84,13 @@ $( document ).ready(function() {
 
     var stepSecond = {
         beforeSubmit: function(){
-            $("#cotentStepOne").addClass('whirl');
+            $("#cotentStepSecond").addClass('whirl');
         },
         success: function(data){
-            $("#cotentStepOne").removeClass('whirl');
+            $("#cotentStepSecond").removeClass('whirl');
             if (data.status == 'sucesso') {
                 swal('Sucesso!','Formúlario concluido com sucesso.','success').then(function (){
-                    window.location.href = '/pesquisa/firststep/'
+                    window.location.href = '/pesquisa/etapainicial'
                 }); 
             } else {
                 swal('Ooops!', data.mensagem, 'error').then(function (){
@@ -126,7 +159,6 @@ $( document ).ready(function() {
             }
 
         } else if ($("#selectQtdPessoas option:selected").val() == 'sete_ou_oito') {
-
             if (soma > 7 && soma > 8 ) {
                 swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
                 $("#btnStepOne").prop('disabled', true)
@@ -135,10 +167,19 @@ $( document ).ready(function() {
 
 
             if( soma < 7 || soma < 8) {
-                $("#btnStepOne").prop('disabled', false)
+                $("#btnStepOne").prop('disabled', true)
             } 
 
             if( soma == 7 || soma == 8) {
+                $("#btnStepOne").prop('disabled', false)
+            }
+        } else if ($("#selectQtdPessoas option:selected").val() == 'nove_ou_mais') {
+
+            if( soma < 9) {
+                $("#btnStepOne").prop('disabled', true)
+            } 
+
+            if( soma >= 9) {
                 $("#btnStepOne").prop('disabled', false)
             }
         }
@@ -146,14 +187,34 @@ $( document ).ready(function() {
     });
 
     $("#selectReponsavelFamilia").change(function(event) {
-        $("#btnStepSecond").prop('disabled', false)
+        
+        if ( $("#pessoas_deficiencia option:selected").val() == 1 ) {
+            
+            if ( $.trim($("#membro_familia").val()) == "" || $("#selectTipoDeficiencia option:selected").val() == 0 || $("#selectReponsavelFamilia option:selected").val() == 0 ) {
+                $("#btnStepSecond").prop('disabled', true)
+            } else {
+                $("#btnStepSecond").prop('disabled', false)
+            }
+        } else if($("#selectReponsavelFamilia option:selected").val() != 0) {
+            $("#btnStepSecond").prop('disabled', false)
+        }
     });
+
+
+    $("#btnStepInical").prop('disabled', true)
+
+    $("#selectQtdPessoas").change(function(event) {
+        $(".qtd_idade").trigger('blur')
+    });
+
 });
 
-/**
- * Da um display block no primeiro step
- */
-function oneStep() 
-{
-    $("#oneStep").removeClass("d-none");
+function liberarButton(data) {
+    if (data == 0) {
+        $(".btn").prop('disabled', true)
+
+    } else {
+        $(".btn").prop('disabled', false)
+
+    }
 }

@@ -27,6 +27,6 @@ class Pesquisa extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'second_step', 'cidade_id', 'cras_id', 'bairro_id', 'qtd_pessoas', 'qtd_idade_1', 'qtd_idade_2',
+    protected $fillable = ['id', 'user_id', 'second_step', 'first_step', 'cidade_id', 'cras_id', 'bairro_id', 'qtd_pessoas', 'qtd_idade_1', 'qtd_idade_2',
     'qtd_idade_3', 'qtd_idade_4','qtd_idade_5','pessoas_deficiencia','tipo_deficiencia', 'mebro_familia', 'reponsavel_familia'];
 }

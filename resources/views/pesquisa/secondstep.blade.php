@@ -37,8 +37,8 @@
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12 deficiencia d-none">
                                             <label for="tipoDeficiencia"><i class="fas fa-wheelchair"></i><strong> Qual o tipo deficiência ?: </strong></label>
-                                            <select name="tipo_deficiencia" class="form-control form-select-sm" id="tipoDeficiencia">
-                                                <option value="">Selecione ...</option>
+                                            <select name="tipo_deficiencia" class="form-control form-select-sm" id="selectTipoDeficiencia">
+                                                <option value="0">Selecione ...</option>
                                                 <option value="mental">Mental</option>
                                                 <option value="fisica">Física</option>
                                                 <option value="visual">Visual</option>
@@ -49,13 +49,13 @@
                                         </div>
                                         <div class="form-group col-md-4 col-sm-12  deficiencia d-none">
                                             <label for="mebro_familia"><i class="fas fa-wheelchair"></i>Qual membro da família ?:</label>
-                                            <input type="text" name="mebro_familia" class="form-control">
+                                            <input type="text" name="mebro_familia" id="membro_familia" class="form-control" value="">
                                             <small class="text-muted">Ex: Pai, Mãe, Filho</small>
                                         </div>
                                         <div class="form-group col-md-12 col-sm-12">
                                             <label for="reposanvelFamilia"><i class="fas fa-user-check"></i><strong> Responsável pela família: </strong></label>
                                             <select name="reponsavel_familia" class="form-control form-select-sm" id="selectReponsavelFamilia">
-                                                <option value="">Selecione ...</option>
+                                                <option value="0">Selecione ...</option>
                                                 <option value="mãe">Mãe</option>
                                                 <option value="pai">Pai</option>
                                                 <option value="avô">Avô</option>

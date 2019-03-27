@@ -26,11 +26,33 @@ class PesquisaController extends Controller
      * Retorna a view index.
      * @return view
      */
+    public function etapainicial()
+    {
+        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('first_step', true)->where('finalizado', null)->first();
+        if (!empty($aberto)) {
+            return redirect('/pesquisa/firststep/');
+        }
+
+        $cidade = $this->cidade::find(1);
+
+        $cras = $this->cras::all();
+        
+        return view('pesquisa/etapainicial',[
+            'cidade' => $cidade,
+            'cras' => $cras
+        ]);
+    }
+
+
+    /** 
+     * Retorna a view index.
+     * @return view
+     */
     public function stepone()
     {
 
-        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('finalizado', null)->first();
-        if ($aberto) {
+        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('second_step', true)->where('finalizado', null)->first();
+        if (!empty($aberto)) {
             return redirect('/pesquisa/secondstep/');
         }
 
@@ -46,13 +68,30 @@ class PesquisaController extends Controller
 
 
     /** 
+     * Faz save do stepinicial.
+     * @return view
+     */
+    public function etapainicialsave(Request $request)
+    {
+        $save = $this->pesquisa::create($request->except('_token'));
+
+        if($save) return response()->json(['status' => 'sucesso', 'mensagem' => '', 'dados' => $save->id]);
+
+        return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
+
+    }    
+
+    /** 
      * Faz save do stepone.
      * @return view
      */
     public function steponesave(Request $request)
     {
-        $save = $this->pesquisa::create($request->all());
-        if($save) return response()->json(['status' => 'sucesso', 'mensagem' => '', 'dados' => $save->id]);
+        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('second_step', null)->where('finalizado', null)->first();
+
+        $update = $this->pesquisa::where('id', $aberto->id)->update($request->except('_token'));
+
+        if($update) return response()->json(['status' => 'sucesso', 'mensagem' => '', 'dados' => '']);
 
         return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
 
@@ -64,6 +103,7 @@ class PesquisaController extends Controller
      */
     public function secondstep(Request $request)
     {
+
         return view('pesquisa/secondstep');
     }
 
@@ -76,7 +116,7 @@ class PesquisaController extends Controller
 
         $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('finalizado', null)->first();
 
-        $update = $this->pesquisa::where('user_id', $aberto->user_id)->update($request->except('_token'));
+        $update = $this->pesquisa::where('id', $aberto->id)->update($request->except('_token'));
 
         if($update) return response()->json(['status' => 'sucesso', 'mensagem' => '']);
 
@@ -92,7 +132,7 @@ class PesquisaController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()) {
-            return redirect('/pesquisa/firststep/');
+            return redirect('/pesquisa/etapainicial');
 
         } else {
             return view('auth/login');
