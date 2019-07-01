@@ -26,13 +26,8 @@ class PesquisaController extends Controller
      * Retorna a view index.
      * @return view
      */
-    public function etapainicial()
+    public function formulario()
     {
-        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('first_step', true)->where('finalizado', null)->first();
-        if (!empty($aberto)) {
-            return redirect('/pesquisa/firststep/');
-        }
-
         $cidade = $this->cidade::find(1);
 
         $cras = $this->cras::all();

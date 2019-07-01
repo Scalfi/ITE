@@ -103,12 +103,8 @@ $( document ).ready(function() {
     // bind form using 'ajaxForm' 
     $('#formSecondStep').ajaxForm(stepSecond); 
 
-
-    $("#btnStepOne").prop('disabled', true)
-    $("#btnStepSecond").prop('disabled', true)
-
     $(".qtd_idade").blur(function(event) {
-
+        let pessoas_domicilio = $("#qtd_pessoas").val();
         let elem = $(".qtd_idade")
         var soma = 0
         $.each(elem, function(index, value) {
@@ -117,76 +113,33 @@ $( document ).ready(function() {
             }
         });
 
-        if ($("#selectQtdPessoas option:selected").val() == 'um_ou_dois') {
-            $("#btnStepOne").prop('disabled', false)
-
-            if ( soma > 1 && soma > 2 ) {
-                swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                $(".qtd_idade").val(0)
-                $("#btnStepOne").prop('disabled', true)
-            }
-
-
-        } else if ($("#selectQtdPessoas option:selected").val() == 'tres_ou_quatro') {
-            if (soma > 3 && soma > 4 ) {
-                swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio', 'error')
-                $(".qtd_idade").val(0)
-                $("#btnStepOne").prop('disabled', true)
-            }
-
-            if( soma < 3 || soma < 4) {
-                $("#btnStepOne").prop('disabled', true)
-            }            
-
-            if( soma == 3 || soma == 4) {
-                $("#btnStepOne").prop('disabled', false)
-            }
-            
-        } else if ($("#selectQtdPessoas option:selected").val() == 'cinco_ou_seis') {
-
-            if (soma > 5 && soma > 6 ) {
-                swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                $(".qtd_idade").val(0)
-                $("#btnStepOne").prop('disabled', true)
-            }
-
-            if( soma < 5 || soma < 6) {
-                $("#btnStepOne").prop('disabled', true)
-            }
-
-            if( soma == 5 || soma == 6) {
-                $("#btnStepOne").prop('disabled', false)
-            }
-
-        } else if ($("#selectQtdPessoas option:selected").val() == 'sete_ou_oito') {
-            if (soma > 7 && soma > 8 ) {
-                swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
-                $("#btnStepOne").prop('disabled', true)
-                $(".qtd_idade").val(0)
-            }
-
-
-            if( soma < 7 || soma < 8) {
-                $("#btnStepOne").prop('disabled', true)
-            } 
-
-            if( soma == 7 || soma == 8) {
-                $("#btnStepOne").prop('disabled', false)
-            }
-        } else if ($("#selectQtdPessoas option:selected").val() == 'nove_ou_mais') {
-
-            if( soma < 9) {
-                $("#btnStepOne").prop('disabled', true)
-            } 
-
-            if( soma >= 9) {
-                $("#btnStepOne").prop('disabled', false)
-            }
+        if ( soma > pessoas_domicilio ) {
+            swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
+            $(".qtd_idade").val(0)
         }
+        
 
     });
 
-    $("#selectReponsavelFamilia").change(function(event) {
+    $(".escolaridade").blur(function(event) {
+        let pessoas_domicilio = $("#qtd_pessoas").val();
+        let elem = $(".escolaridade")
+        var soma = 0
+        $.each(elem, function(index, value) {
+            if (!isNaN(parseInt(value.value))) {
+                soma = soma + parseInt(value.value);
+            }
+        });
+
+        if ( soma > pessoas_domicilio ) {
+            swal('Caro usúario', 'Quantidade de pessoas não pode exceder o número de pessoas que residem no domicílio!', 'error')
+            $(".escolaridade").val(0)
+        }
+        
+
+    });
+
+    /*$("#selectReponsavelFamilia").change(function(event) {
         
         if ( $("#pessoas_deficiencia option:selected").val() == 1 ) {
             
@@ -205,7 +158,7 @@ $( document ).ready(function() {
 
     $("#selectQtdPessoas").change(function(event) {
         $(".qtd_idade").trigger('blur')
-    });
+    });*/
 
 });
 
