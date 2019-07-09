@@ -20,11 +20,11 @@ Route::get('/pesquisa/formulario', 'PesquisaController@formulario')->middleware(
 //Route::get('/pesquisa/firststep', 'PesquisaController@stepone')->middleware('auth');
 //Route::get('/pesquisa/secondstep', 'PesquisaController@secondstep')->middleware('auth');
 
-Route::post('/save/stepinical', 'PesquisaController@etapainicialsave')->middleware('auth');
+Route::post('/save/formulario', 'PesquisaController@save')->middleware('auth');
 //Route::post('/save/stepone', 'PesquisaController@steponesave')->middleware('auth');
 //Route::post('/save/stepsecond', 'PesquisaController@secondstepsave')->middleware('auth');
 
 Route::post('/bairro', 'BairroController@getBairros')->middleware('auth');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PesquisaController@formulario')->middleware('auth');

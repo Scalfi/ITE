@@ -28,14 +28,7 @@ class PesquisaController extends Controller
      */
     public function formulario()
     {
-        $cidade = $this->cidade::find(1);
-
-        $cras = $this->cras::all();
-        
-        return view('pesquisa/etapainicial',[
-            'cidade' => $cidade,
-            'cras' => $cras
-        ]);
+        return view('pesquisa/formulario');
     }
 
 
@@ -66,7 +59,7 @@ class PesquisaController extends Controller
      * Faz save do stepinicial.
      * @return view
      */
-    public function etapainicialsave(Request $request)
+    public function save(Request $request)
     {
         $save = $this->pesquisa::create($request->except('_token'));
 
@@ -127,7 +120,7 @@ class PesquisaController extends Controller
     public function index(Request $request)
     {
         if (Auth::user()) {
-            return redirect('/pesquisa/etapainicial');
+            return redirect('/pesquisa/formulario');
 
         } else {
             return view('auth/login');

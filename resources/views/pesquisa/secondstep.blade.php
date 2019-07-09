@@ -71,6 +71,23 @@
                         <button type="submit" class="btn btn-sm btn-success float-right mt-2" id="btnStepSecond"><i class="fa fa-paper-plane mr-2"></i>Finalizar</button>
                     </div>
                 </div>
+                          <div class="form-group col-md-4 col-sm-12">
+                        <label for="cidade"><i class=" mr-2 fas fa-city"></i><strong> Cidade: </strong></label>
+                        <select name="cidade_id" class="form-control form-select-sm" id="selectCidade">
+                            <option value="{{$cidade->id}}">{{$cidade->name}}</option>
+                        </select>
+                    <small class="text-muted">Selecione a cidade.</small>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label for="cras"><i class=" mr-2 fas fa-passport"></i><strong> Cras: </strong></label>
+                        <select name="cras_id" class="form-control form-select-sm" id="selectCras">
+                            <option value="">Selecione...</option>
+                            @foreach ($cras as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
+                        </select>
+                    <small class="text-muted">Selecione o cras.</small>
+                    </div>
             </form>
         </div>
     @endsection
