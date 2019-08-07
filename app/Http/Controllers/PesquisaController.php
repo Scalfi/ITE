@@ -33,29 +33,6 @@ class PesquisaController extends Controller
 
 
     /** 
-     * Retorna a view index.
-     * @return view
-     */
-    public function stepone()
-    {
-
-        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('second_step', true)->where('finalizado', null)->first();
-        if (!empty($aberto)) {
-            return redirect('/pesquisa/secondstep/');
-        }
-
-        $cidade = $this->cidade::find(1);
-
-        $cras = $this->cras::all();
-        
-        return view('pesquisa/firststep',[
-            'cidade' => $cidade,
-            'cras' => $cras
-        ]);
-    }
-
-
-    /** 
      * Faz save do stepinicial.
      * @return view
      */
@@ -68,50 +45,6 @@ class PesquisaController extends Controller
         return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
 
     }    
-
-    /** 
-     * Faz save do stepone.
-     * @return view
-     */
-    public function steponesave(Request $request)
-    {
-        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('second_step', null)->where('finalizado', null)->first();
-
-        $update = $this->pesquisa::where('id', $aberto->id)->update($request->except('_token'));
-
-        if($update) return response()->json(['status' => 'sucesso', 'mensagem' => '', 'dados' => '']);
-
-        return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
-
-    }
-
-    /** 
-     * Faz save do stepone.
-     * @return view
-     */
-    public function secondstep(Request $request)
-    {
-
-        return view('pesquisa/secondstep');
-    }
-
-    /** 
-     * Faz save do stepone.
-     * @return view
-     */
-    public function secondstepsave(Request $request)
-    {
-
-        $aberto = $this->pesquisa::where('user_id', Auth::user()->id)->where('finalizado', null)->first();
-
-        $update = $this->pesquisa::where('id', $aberto->id)->update($request->except('_token'));
-
-        if($update) return response()->json(['status' => 'sucesso', 'mensagem' => '']);
-
-        return response()->json(['status' => 'falha', 'mensagem' => 'Ocorreu uma falha or favor tente novamente']);
-
-    }
-
 
     /** 
      * Faz save do stepone.

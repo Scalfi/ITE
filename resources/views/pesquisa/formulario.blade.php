@@ -117,12 +117,12 @@
                         <label for="pessoasDeficiencia"><i class=" mr-2 fas fa-wheelchair"></i><strong> Pessoa com Deficiência: </strong></label>
                         <select name="pessoas_deficiencia" class="form-control form-select-sm" id="pessoas_deficiencia">
                             <option value="">Não</option>
-                            <option value="True">Sim</option>
+                            <option value="1">Sim</option>   
                         </select>
                         <small class="text-muted">Selecione se existe pessoa com defiência na casa.</small>
                     </div>            
                      <div class="form-group col-md-12 col-sm-12 text-center">
-                        <label for=""><i class="fas  mr-2 fa-graduation-cap mr-2"></i><strong>Escolaridade dos menbros da família: </strong></label>
+                        <label for=""><i class="fas  mr-2 fa-graduation-cap mr-2"></i><strong>Escolaridade dos membros da família: </strong></label>
                     </div>
                      <div class="form-group col-md-4 col-sm-12">
                         <label for="escolaridade"><i class=" mr-2 fas fa-hashtag"></i>Ensino Infantil</label>
