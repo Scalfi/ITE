@@ -31,7 +31,18 @@
                         <label for="idade"><i class=" mr-2 fas fa-signature"></i><strong> idade: </strong></label>
                          <input required type="number" name="idade" class="form-control form-control-sm">   
                         <small class="text-muted">Digite a idade.</small>
-                    </div>                       
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label for="cras"><i class=" mr-2 fas fa-passport"></i><strong> Cras: </strong></label>
+                        <select name="cras_id" class="form-control form-select-sm" id="selectCras">
+                            <option value="">Selecione...</option>
+                            @foreach ($cras as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
+                        </select>
+                        <small class="text-muted">Selecione o cras.</small>
+                    </div>
+                   
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="cep"><i class=" mr-2 fas fa-map-marker"></i><strong> CEP: </strong></label>
                          <input required type="text" name="cep" id="cep" class="form-control form-control-sm">   
@@ -43,7 +54,9 @@
                     </div>                
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="bairro"><i class=" mr-2 fas fa-map-marker"></i><strong> Bairro: </strong></label>
-                         <input  type="text" name="bairro" id="bairro" class="form-control form-control-sm" readonly>   
+                        <select name="bairro" id="bairro" class="form-control form-control-sm" riqured readonly>
+                            <option value="" selected>Selecio o bairro.</option>
+                        </select> 
                     </div>
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="cidade"><i class=" mr-2 fas fa-map-marker"></i><strong> Cidade: </strong></label>
@@ -274,7 +287,6 @@
                         <select name="agua_encanada" class="form-control form-select-sm" id="agua_encanada">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div> 
                     <div class="form-group col-md-4 col-sm-12">
@@ -290,7 +302,6 @@
                         <select name="energia" class="form-control form-select-sm" id="energia">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div>                  
                     <div class="form-group col-md-4 col-sm-12">
@@ -298,7 +309,6 @@
                         <select name="escoamento_sanitario" class="form-control form-select-sm" id="escoamento_sanitario">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div>                    
                     <div class="form-group col-md-4 col-sm-12">
@@ -306,7 +316,6 @@
                         <select name="banheiro" class="form-control form-select-sm" id="banheiro">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div>                  
                     <div class="form-group col-md-4 col-sm-12">
@@ -314,7 +323,6 @@
                         <select name="coleta_de_lixo" class="form-control form-select-sm" id="coleta_de_lixo">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div>                    
                     <div class="form-group col-md-4 col-sm-12">
@@ -322,7 +330,6 @@
                         <select name="pavimentacao" class="form-control form-select-sm" id="pavimentacao">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
-                            <option value="nao">Outros</option>
                         </select>
                     </div>
                     <div class="form-group col-md-12 col-sm-12 text-center">

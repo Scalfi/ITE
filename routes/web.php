@@ -19,3 +19,4 @@ Auth::routes();
 Route::get('/pesquisa/formulario', 'PesquisaController@formulario')->middleware('auth');
 Route::post('/save/formulario', 'PesquisaController@save')->middleware('auth');
 Route::get('/home', 'PesquisaController@formulario')->middleware('auth');
+Route::post('/bairro', 'PesquisaController@getBairros')->middleware('auth');

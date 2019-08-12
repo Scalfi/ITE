@@ -3,7 +3,7 @@ $( document ).ready(function() {
         $.ajax({
             url: "/bairro",
             type: 'POST',
-            dataType: "html",
+            dataType: "JSON",
             data: {
                 id : $("#selectCras option:selected").val(),
             },
@@ -11,8 +11,11 @@ $( document ).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                $("#divBairros").html(response)
-                liberarButton(0)
+
+                console.log(response)
+                $('#bairro').select2({
+                    data:response.bairros,
+                });
             },
             error: function (){
                 swal('Caro usúario', 'Ocorreu um erro por favor atualize a pagina','error')
@@ -48,14 +51,13 @@ $( document ).ready(function() {
             $("#cotentStepInicial").addClass('whirl');
         },
         success: function(data){
-            $("#cotentStepIncial").removeClass ('whirl');
+            $("#cotentStepInicial").removeClass('whirl');
             if (data.status == 'sucesso') {
                 swal('Sucesso!','Formúlario concluido com sucesso.','success').then(function (){
                     window.location.href = '/pesquisa/formulario'
                 }); 
             } else {
                 swal('Ooops!', data.mensagem, 'error').then(function (){
-                    if (data.dados.reload == 'true') location.reload();
                 });
             }
         }
@@ -167,7 +169,6 @@ $( document ).ready(function() {
     function limpa_formulário_cep() {
     // Limpa valores do formulário de cep.
         $("#rua").val("");
-        $("#bairro").val("");
         $("#cidade").val("");
         $("#uf").val("");
         $("#ibge").val("");
@@ -190,7 +191,6 @@ $( document ).ready(function() {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
                 $("#rua").val("...");
-                $("#bairro").val("...");
                 $("#cidade").val("...");
                 $("#uf").val("...");
                 $("#ibge").val("...");
@@ -201,7 +201,6 @@ $( document ).ready(function() {
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
                         $("#rua").val(dados.logradouro);
-                        $("#bairro").val(dados.bairro);
                         $("#cidade").val(dados.localidade);
                         $("#uf").val(dados.uf);
                         $("#ibge").val(dados.ibge);
