@@ -3,7 +3,7 @@ $( document ).ready(function() {
         $.ajax({
             url: "/bairro",
             type: 'POST',
-            dataType: "JSON",
+            dataType: "HTML",
             data: {
                 id : $("#selectCras option:selected").val(),
             },
@@ -11,11 +11,7 @@ $( document ).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-
-                console.log(response)
-                $('#bairro').select2({
-                    data:response.bairros,
-                });
+                $("#divBairros").html(response)
             },
             error: function (){
                 swal('Caro usúario', 'Ocorreu um erro por favor atualize a pagina','error')
@@ -252,6 +248,5 @@ function liberarButton(data) {
 
     } else {
         $(".btn").prop('disabled', false)
-
     }
 }

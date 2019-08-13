@@ -51,13 +51,8 @@
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="rua"><i class=" mr-2 fas fa-map-marker"></i><strong> Rua: </strong></label>
                          <input  type="text" name="rua" id="rua" class="form-control form-control-sm" readonly>   
-                    </div>                
-                    <div class="form-group col-md-4 col-sm-12">
-                        <label for="bairro"><i class=" mr-2 fas fa-map-marker"></i><strong> Bairro: </strong></label>
-                        <select name="bairro" id="bairro" class="form-control form-control-sm" riqured readonly>
-                            <option value="" selected>Selecio o bairro.</option>
-                        </select> 
-                    </div>
+                    </div>        
+                    <div class="form-group col-md-4 col-sm-12" id="divBairros"></div>
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="cidade"><i class=" mr-2 fas fa-map-marker"></i><strong> Cidade: </strong></label>
                          <input  type="text" name="cidade" id="cidade" class="form-control form-control-sm" readonly>   
@@ -196,7 +191,7 @@
                             <option value="formal">Formal</option>
                             <option value="informal">Informal</option>
                             <option value="desempregrado">Desempregado</option>
-                            <option value="aposentado_pensionista">Aposentado/Pensonista :</option>
+                            <option value="aposentado_pensionista">Aposentado/Pensonista </option>
                         </select>
                         <small class="text-muted">Selecione a forma de renda da familia.</small>
                     </div>                

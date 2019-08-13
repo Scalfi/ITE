@@ -91,10 +91,11 @@ class PesquisaController extends Controller
      */
     public function getBairros(Request $request)
     {
-        $bairros = $this->bairro::select('id','name as text')->where('cras_id', $request->id)->get();   
-        return response()->json([
+        $bairros = $this->bairro::where('cras_id', $request->id)->get();   
+        return view('pesquisa/bairros',[
             'bairros' =>  $bairros
         ]);
+
     }
 
 }
