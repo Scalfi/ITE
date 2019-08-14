@@ -34,6 +34,7 @@ class Pesquisa extends Model
         ,'telefone'
         ,'cep'
         ,'rua'
+        ,'cras_id'
         ,'bairro'
         ,'cidade'
         ,'uf'
