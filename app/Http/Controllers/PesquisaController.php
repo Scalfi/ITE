@@ -46,20 +46,7 @@ class PesquisaController extends Controller
      */
     public function save(Request $request)
     {
-        $cras = Validator::make($request->all(), [
-            'cras_id' => 'required',
-        ]);
-
-        if ($cras->fails()) {
-            return response()->json(['status' => 'falha', 'mensagem' => 'Por favor selecione um Cras!']);
-        }
-
-        $bairro = Validator::make($request->all(), [
-            'bairro' => 'required',
-        ]);
-        if ($bairro->fails()) {
-            return response()->json(['status' => 'falha', 'mensagem' => 'Por favor selecione um Bairro!']);
-        }
+ 
 
         $save = $this->pesquisa::create($request->except('_token'));
 

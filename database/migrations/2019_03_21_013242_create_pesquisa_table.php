@@ -25,6 +25,7 @@ class CreatePesquisaTable extends Migration
             $table->string('uf')->nullable();
             $table->string('numero_residencia')->nullable();
             $table->string('reponsavel_familia')->nullable();
+            $table->string('reponsavel_familia_idade')->nullable();
             $table->string('genero')->nullable();
             $table->string('qtd_pessoas', 50)->nullable();
             $table->integer('qtd_idade_1')->default(0);
@@ -33,6 +34,7 @@ class CreatePesquisaTable extends Migration
             $table->integer('qtd_idade_4')->default(0);
             $table->integer('qtd_idade_5')->default(0);
             $table->integer('qtd_idade_6')->default(0);
+            $table->integer('qtd_idade_7')->default(0);
             $table->boolean('pessoas_deficiencia')->nullable();
             $table->integer('escolaridade_infantantil')->default(0);
             $table->integer('escolaridade_fundamental_um')->default(0);
@@ -44,10 +46,15 @@ class CreatePesquisaTable extends Migration
             $table->integer('escolaridade_ceja')->default(0);
             $table->integer('escolaridade_eja')->default(0);
             $table->integer('escolaridade_nao_alfabetizado')->default(0);
+            $table->integer('fora_da_escola')->default(0);
             $table->string('quantidade_de_renda')->nullable();
             $table->string('fonte_de_renda')->nullable();
             $table->string('auxilio')->nullable();
             $table->string('beneficios')->nullable();
+            $table->string('qual_beneficio')->nullable();
+            $table->string('acesso_transporte_publico')->nullable();
+            $table->string('atende_necessidades')->nullable();
+            $table->string('transporte_proprio')->nullable();
             $table->string('cadastro_unico')->nullable();
             $table->string('tempo_reside_municipio')->nullable();
             $table->string('tempo_reside_bairro')->nullable();

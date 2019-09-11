@@ -24,7 +24,7 @@ class Bairro extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var arrayb
      */
     protected $fillable = [
         'id', 'name', 'cras_id'

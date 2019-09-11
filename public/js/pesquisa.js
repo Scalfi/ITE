@@ -32,6 +32,17 @@ $( document ).ready(function() {
             $("#selectTipoDeficiencia").val(0).change()
         }
         
+    });    
+
+    $("#beneficios").change(function () { 
+        if ( $("#beneficios option:selected").val() == 'sim' ) {
+
+            $(".divQualBeneficio").removeClass("d-none");
+        } else {
+            $(".divQualBeneficio").addClass("d-none");
+            $("#membro_familia").val("")
+        }
+        
     });
 
     $("#membro_familia").keyup(function(event) {
@@ -166,6 +177,7 @@ $( document ).ready(function() {
     // Limpa valores do formulário de cep.
         $("#rua").val("");
         $("#cidade").val("");
+        $("#bairro").val("");
         $("#uf").val("");
         $("#ibge").val("");
     }
@@ -188,6 +200,7 @@ $( document ).ready(function() {
                 //Preenche os campos com "..." enquanto consulta webservice.
                 $("#rua").val("...");
                 $("#cidade").val("...");
+                $("#baurri").val("...");
                 $("#uf").val("...");
                 $("#ibge").val("...");
 
@@ -198,6 +211,7 @@ $( document ).ready(function() {
                         //Atualiza os campos com os valores da consulta.
                         $("#rua").val(dados.logradouro);
                         $("#cidade").val(dados.localidade);
+                        $("#bairro").val(dados.bairro);
                         $("#uf").val(dados.uf);
                         $("#ibge").val(dados.ibge);
                     } //end if.
