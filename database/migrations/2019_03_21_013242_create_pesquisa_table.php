@@ -16,6 +16,7 @@ class CreatePesquisaTable extends Migration
         Schema::create('pesquisas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->string('name')->nullable();
             $table->string('idade')->nullable();
             $table->string('telefone')->nullable();
             $table->string('cep')->nullable();
@@ -52,9 +53,6 @@ class CreatePesquisaTable extends Migration
             $table->string('auxilio')->nullable();
             $table->string('beneficios')->nullable();
             $table->string('qual_beneficio')->nullable();
-            $table->string('acesso_transporte_publico')->nullable();
-            $table->string('atende_necessidades')->nullable();
-            $table->string('transporte_proprio')->nullable();
             $table->string('cadastro_unico')->nullable();
             $table->string('tempo_reside_municipio')->nullable();
             $table->string('tempo_reside_bairro')->nullable();
@@ -68,7 +66,10 @@ class CreatePesquisaTable extends Migration
             $table->string('banheiro')->nullable();
             $table->string('coleta_de_lixo')->nullable();
             $table->string('pavimentacao')->nullable();
-            $table->string('acessos')->nullable();
+            $table->string('acesso_transporte_publico')->nullable();
+            $table->string('atende_necessidades')->nullable();
+            $table->string('transporte_proprio')->nullable();
+            $table->string('acesso_cras')->nullable();
             $table->string('interesse_cras')->nullable();
             $table->string('atendimento_creas')->nullable();
             $table->string('familia_acesso_politicas')->nullable();

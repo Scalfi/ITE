@@ -198,8 +198,8 @@
                         <small class="text-muted">Digite o número de pessoas</small>
                     </div>         
                     <div class="form-group col-md-4 col-sm-12">
-                        <label for="escolaridade"><i class=" mr-2 fas fa-hashtag"></i>Há membros em idade escolar (4 aos 17 anos) fora da escola? Quantos?</label>
-                        <input required type="number" name="fora_da_escola" class="form-control escolaridade" value="0">
+                        <label for="fora_da_escola"><i class=" mr-2 fas fa-hashtag"></i>Há membros em idade escolar (4 aos 17 anos) fora da escola? Quantos?</label>
+                        <input required type="number" name="fora_da_escola" class="form-control" value="0">
                     </div>
                     <div class="form-group col-md-12 col-sm-12 text-center">
                         <label for=""><i class="fas  mr-2 fa-users mr-2"></i><strong>Renda Mensal Familiar: </strong></label>
@@ -383,7 +383,7 @@
                     </div>
                     <div class="form-group col-md-4 col-sm-12">
                         <label for="acessos"><i class=" mr-2 fas fa-passport"></i><strong> Por que nunca acessou a unidade do CRAS? </strong></label>
-                        <select name="acessos" class="form-control form-select-sm" id="acessos">
+                        <select name="acesso_cras" class="form-control form-select-sm" id="acessos">
                             <option value="desconhecimento">Desconhecimento</option>
                             <option value="dificuldade_de_acesso">Dificuldade de acesso/trajeto</option>
                             <option value="dificuldade_para_atendimento">Dificuldade para o atendimento</option>
