@@ -66,6 +66,7 @@ class Pesquisa extends Model
         ,'fonte_de_renda'
         ,'auxilio'
         ,'beneficios'
+        ,'fora_da_escola'
         ,'qual_beneficio'
         ,'acesso_transporte_publico'
         ,'atende_necessidades'
